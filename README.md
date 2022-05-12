@@ -10,6 +10,8 @@ Install
 Run
 ---
 >Via Docker:
+1. run docker daemon
+2. run:
 ```
 docker run -it \
   -p 6650:6650 \
