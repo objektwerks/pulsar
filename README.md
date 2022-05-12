@@ -4,22 +4,15 @@ Pulsar
 
 Install
 -------
->Via Docker:
-1. docker pull apachepulsar/pulsar
+1. [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+2. run Docker Desktop
+3. docker pull apachepulsar/pulsar ( via commandline )
 
 Run
 ---
->Via Docker:
-1. run docker daemon
-2. run:
-```
-docker run -it \
-  -p 6650:6650 \
-  -p 8080:8080 \
-  --name pulsar \
-  apachepulsar/pulsar:2.10.0 \
-  bin/pulsar standalone
-```
+1. run Docker Desktop
+2. open Docker Dashboard
+3. run Apache Pulsar Image
 
 Test
 ----
