@@ -16,19 +16,18 @@ class Pulsar4sTest extends AnyFunSuite {
   val conf = ConfigFactory.load("test.conf")
   val url = conf.getString("url")
   val topicName = conf.getString("topicName")
-  val producerName = conf.getString("producerName")
   val subscriptionName = conf.getString("subscriptionName")
 
   test("produce > consume") {
     val client = PulsarClient(url)
     val topic = Topic(topicName)
+    val subscription = Subscription(subscriptionName)
+    val config = ConsumerConfig(subscription, Seq(topic))
 
     val producer = client.producer[Event](ProducerConfig(topic))
     producer.send( Event(1, 1) )
 
-    val subscription = Subscription(subscriptionName)
-    val consumerConfig = ConsumerConfig(subscription, Seq(topic))
-    val consumer = client.consumer[Event](consumerConfig)
+    val consumer = client.consumer[Event](config)
     consumer.receive match {
       case Success(message) => assert( message.value.key == message.value.value )
       case Failure(error) => fail(error.getMessage())
