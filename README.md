@@ -14,6 +14,18 @@ Run
 2. open Docker Dashboard
 3. run Apache Pulsar Image
 
+Commandline
+-----------
+```
+docker run -it \
+  -p 6650:6650 \
+  -p 8080:8080 \
+  --mount source=pulsardata,target=/pulsar/data \
+  --mount source=pulsarconf,target=/pulsar/conf \
+  apachepulsar/pulsar:2.10.0 \
+  bin/pulsar standalone
+```
+
 Test
 ----
 1. sbt clean test
