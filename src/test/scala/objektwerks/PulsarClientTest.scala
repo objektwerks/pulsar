@@ -28,7 +28,7 @@ class PulsarClientTest extends AnyFunSuite {
     val config = ConsumerConfig(subscription, Seq(topic))
 
     val producer = client.producer[Event](ProducerConfig(topic))
-    producer.send( Event(1, 1) )
+    producer.send( Event(2, 2) )
 
     val consumer = client.consumer[Event](config)
     consumer.receive match {
