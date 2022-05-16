@@ -12,7 +12,7 @@ import scala.util.{Failure, Success}
 
 case class Event(key: Int, value: Int)
 
-class Pulsar4sTest extends AnyFunSuite {
+class PulsarTest extends AnyFunSuite {
   val conf = ConfigFactory.load("test.conf")
   val url = conf.getString("url")
   val topicName = conf.getString("topicName")
