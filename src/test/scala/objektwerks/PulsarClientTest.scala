@@ -27,7 +27,9 @@ class PulsarClientTest extends AnyFunSuite {
 
     val consumer = client.consumer[Event](config)
     consumer.receive match {
-      case Success(message) => assert( message.value.key == message.value.value )
+      case Success(message) =>
+        consumer.acknowledge(message.messageId)
+        assert( message.value.key == message.value.value )
       case Failure(error) => fail(error.getMessage())
     }
 

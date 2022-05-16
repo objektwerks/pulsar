@@ -21,11 +21,13 @@ object PulsarClientApp {
     val config = ConsumerConfig(subscription, Seq(topic))
 
     val producer = client.producer[Event](ProducerConfig(topic))
-    producer.send( Event(1, 1) )
+    producer.sendAsync( Event(1, 1) )
 
     val consumer = client.consumer[Event](config)
-    consumer.receive match {
-      case Success(message) => assert( message.value.key == message.value.value )
+    consumer.receiveAsync match {
+      case Success(message) =>
+        consumer.acknowledge(message.messageId)
+        assert( message.value.key == message.value.value )
       case Failure(error) => println(error.getMessage())
     }
 
