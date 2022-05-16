@@ -7,6 +7,7 @@ import com.typesafe.config.ConfigFactory
 import io.circe.generic.auto._
 
 import scala.util.{Failure, Success}
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object PulsarClientApp {
   def main(args: Array[String]): Unit = {
@@ -24,7 +25,7 @@ object PulsarClientApp {
     producer.sendAsync( Event(1, 1) )
 
     val consumer = client.consumer[Event](config)
-    consumer.receiveAsync match {
+    consumer.receive match {
       case Success(message) =>
         consumer.acknowledge(message.messageId)
         assert( message.value.key == message.value.value )
