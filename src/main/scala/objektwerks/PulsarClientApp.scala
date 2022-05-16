@@ -8,7 +8,7 @@ import io.circe.generic.auto._
 
 import scala.util.{Failure, Success}
 
-object App {
+object PulsarClientApp {
   def main(args: Array[String]): Unit = {
     val conf = ConfigFactory.load("app.conf")
     val url = conf.getString("url")
