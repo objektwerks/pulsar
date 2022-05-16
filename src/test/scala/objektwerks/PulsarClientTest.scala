@@ -15,6 +15,11 @@ class PulsarClientTest extends AnyFunSuite {
   val url = conf.getString("url")
   val topicName = conf.getString("topicName")
   val subscriptionName = conf.getString("subscriptionName")
+    
+  def close(producer: Producer[Event], consumer: Consumer[Event]): Unit = {
+    producer.close()
+    consumer.close()
+  }
 
   test("produce > consume") {
     val client = PulsarClient(url)
@@ -29,11 +34,11 @@ class PulsarClientTest extends AnyFunSuite {
     consumer.receive match {
       case Success(message) =>
         consumer.acknowledge(message.messageId)
+        close(producer, consumer)
         assert( message.value.key == message.value.value )
-      case Failure(error) => fail(error.getMessage())
+      case Failure(error) =>
+        close(producer, consumer)
+        fail(error.getMessage())
     }
-
-    producer.close()
-    consumer.close()
   }
 }

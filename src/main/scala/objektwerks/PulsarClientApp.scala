@@ -28,10 +28,15 @@ object PulsarClientApp {
     consumer.receive match {
       case Success(message) =>
         consumer.acknowledge(message.messageId)
-        assert( message.value.key == message.value.value )
-      case Failure(error) => println(error.getMessage())
+        println(s"*** Valid message received: $message")
+        close(producer, consumer)
+      case Failure(error) =>
+        println(s"*** Failure: ${error.getMessage()}")
+        close(producer, consumer)
     }
+  }
 
+  def close(producer: Producer[Event], consumer: Consumer[Event]): Unit = {
     producer.close()
     consumer.close()
   }
