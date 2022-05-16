@@ -8,14 +8,14 @@ Install
 2. run Docker Desktop
 3. docker pull apachepulsar/pulsar:2.10.0 ( via commandline )
 
-Pulsar Docker
--------------
+Docker
+------
 1. run Docker Desktop
 2. open Docker Dashboard
 3. run Apache Pulsar Image
 
-Pulsar Docker Commandline
--------------------------
+Docker Commandline
+------------------
 ```
 docker run -it \
   -p 6650:6650 \
