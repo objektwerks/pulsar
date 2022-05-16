@@ -6,16 +6,16 @@ Install
 -------
 1. [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 2. run Docker Desktop
-3. docker pull apachepulsar/pulsar ( via commandline )
+3. docker pull apachepulsar/pulsar:2.10.0 ( via commandline )
 
-Run
----
+Pulsar Docker
+-------------
 1. run Docker Desktop
 2. open Docker Dashboard
 3. run Apache Pulsar Image
 
-Commandline
------------
+Pulsar Docker Commandline
+-------------------------
 ```
 docker run -it \
   -p 6650:6650 \
