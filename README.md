@@ -7,6 +7,7 @@ Install
 1. [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 2. run Docker Desktop
 3. docker pull apachepulsar/pulsar:2.10.0 ( via commandline )
+>Also see [Pulsar Standalone](https://pulsar.apache.org/docs/getting-started-standalone/)
 
 Docker
 ------
