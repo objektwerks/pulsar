@@ -10,7 +10,7 @@ import org.scalatest.funsuite.AnyFunSuite
 
 import scala.util.{Failure, Success}
 
-class PulsarTest extends AnyFunSuite {
+class PulsarClientTest extends AnyFunSuite {
   val conf = ConfigFactory.load("test.conf")
   val url = conf.getString("url")
   val topicName = conf.getString("topicName")
