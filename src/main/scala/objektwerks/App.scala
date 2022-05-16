@@ -6,16 +6,15 @@ import com.typesafe.config.ConfigFactory
 
 import io.circe.generic.auto._
 
-import org.scalatest.funsuite.AnyFunSuite
+import scala.util.{Failure, Success}
 
+object App {
+  def main(args: Array[String]): Unit = {
+    val conf = ConfigFactory.load("app.conf")
+    val url = conf.getString("url")
+    val topicName = conf.getString("topicName")
+    val subscriptionName = conf.getString("subscriptionName")
 
-class PulsarTest extends AnyFunSuite {
-  val conf = ConfigFactory.load("test.conf")
-  val url = conf.getString("url")
-  val topicName = conf.getString("topicName")
-  val subscriptionName = conf.getString("subscriptionName")
-
-  test("produce > consume") {
     val client = PulsarClient(url)
     val topic = Topic(topicName)
     val subscription = Subscription(subscriptionName)
@@ -27,7 +26,7 @@ class PulsarTest extends AnyFunSuite {
     val consumer = client.consumer[Event](config)
     consumer.receive match {
       case Success(message) => assert( message.value.key == message.value.value )
-      case Failure(error) => fail(error.getMessage())
+      case Failure(error) => println(error.getMessage())
     }
 
     producer.close()
