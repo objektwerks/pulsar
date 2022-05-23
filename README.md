@@ -9,8 +9,8 @@ Install
 3. ```docker pull apachepulsar/pulsar:latest```
 >Also see [Pulsar Standalone](https://pulsar.apache.org/docs/getting-started-standalone/)
 
-Docker
-------
+Docker Desktop App
+------------------
 1. run Docker Desktop
 2. open Docker Dashboard
 3. run Apache Pulsar Image
