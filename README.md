@@ -33,3 +33,8 @@ Test
 Run
 ---
 1. sbt run
+
+Resources
+---------
+1. [Apache Pulsar](https://pulsar.apache.org/)
+2. [Docker Apache Pulsar](https://hub.docker.com/r/apachepulsar/pulsar)
