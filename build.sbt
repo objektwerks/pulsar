@@ -9,6 +9,6 @@ libraryDependencies ++= {
     "com.sksamuel.pulsar4s" %% "pulsar4s-circe" % pulsar4sVersion,
     "com.typesafe" % "config" % "1.4.2",
     "ch.qos.logback" % "logback-classic" % "1.4.5",
-    "org.scalatest" %% "scalatest" % "3.2.14" % Test
+    "org.scalatest" %% "scalatest" % "3.2.15" % Test
   )
 }
