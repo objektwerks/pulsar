@@ -1,7 +1,7 @@
 name := "pulsar"
 organization := "objektwerks"
 version := "0.1-SNAPSHOT"
-scalaVersion := "2.13.15"
+scalaVersion := "2.13.16"
 libraryDependencies ++= {
   val pulsar4sVersion = "2.7.3"
   Seq(
